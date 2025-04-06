@@ -1,0 +1,19 @@
+package com.santt4na.booktrack.enums;
+
+public enum CategoryBook {
+	FICTION,
+	NON_FICTION,
+	SCIENCE,
+	TECHNOLOGY,
+	HISTORY,
+	BIOGRAPHY,
+	FANTASY,
+	MYSTERY,
+	ROMANCE,
+	HORROR,
+	SELF_HELP,
+	EDUCATION,
+	TRAVEL,
+	HEALTH,
+	POETRY
+}

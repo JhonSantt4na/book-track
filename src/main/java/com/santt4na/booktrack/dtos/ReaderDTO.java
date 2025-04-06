@@ -28,13 +28,7 @@ public class ReaderDTO {
 	@Pattern(regexp = "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$", message = "CPF inválido (formato: 000.000.000-00)")
 	private String cpf;
 	
-	public ReaderDTO(Long id,String name, String email, String address, String phone, String cpf) {
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.address = address;
-		this.phone = phone;
-		this.cpf = cpf;
+	public ReaderDTO() {
 	}
 	
 	public Long getId() {
