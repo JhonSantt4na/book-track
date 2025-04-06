@@ -17,6 +17,9 @@ public class Reader {
 	@Column(unique = true)
 	private String cpf;
 	
+	public Reader() {
+	}
+	
 	public Reader(String name, String email, String address, String phone, String cpf) {
 		this.name = name;
 		this.email = email;
@@ -24,6 +27,7 @@ public class Reader {
 		this.phone = phone;
 		this.cpf = cpf;
 	}
+	
 	
 	public Long getId() {
 		return id;
