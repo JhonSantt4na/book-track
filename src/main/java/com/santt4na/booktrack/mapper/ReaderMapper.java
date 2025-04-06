@@ -1,0 +1,24 @@
+package com.santt4na.booktrack.mapper;
+
+import com.santt4na.booktrack.domain.Reader;
+import com.santt4na.booktrack.dtos.ReaderDTO;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Component;
+
+@Component
+@Mapper(componentModel = "spring")
+public interface ReaderMapper {
+	ReaderMapper INSTANCE = Mappers.getMapper(ReaderMapper.class);
+	
+	@Mapping(target = "id", ignore = true)
+	void updateReaderFromDTO(ReaderDTO dto, @MappingTarget Reader entity);
+	
+	@Mapping(target = "id", ignore = true)
+	Reader toEntity(ReaderDTO readerDTO);
+	
+	ReaderDTO toDto(Reader reader);
+	
+}

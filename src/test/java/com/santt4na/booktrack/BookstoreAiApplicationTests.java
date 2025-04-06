@@ -1,4 +1,4 @@
-package com.santt4na.bookstore_ai;
+package com.santt4na.booktrack;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
