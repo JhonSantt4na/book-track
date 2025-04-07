@@ -3,6 +3,9 @@ package com.santt4na.booktrack.domain;
 import com.santt4na.booktrack.enums.CategoryBook;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Book {
 	
@@ -17,6 +20,9 @@ public class Book {
 	private String editor;
 	private String cover;
 	private boolean Available;
+	
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Rental> rentals = new ArrayList<>();
 	
 	public Book() {
 	}
