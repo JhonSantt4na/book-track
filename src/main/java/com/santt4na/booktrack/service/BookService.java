@@ -1,6 +1,6 @@
 package com.santt4na.booktrack.service;
 
-import com.santt4na.booktrack.dtos.BookDTO;
+import com.santt4na.booktrack.dtos.book.BookDTO;
 import java.util.List;
 
 public interface BookService {

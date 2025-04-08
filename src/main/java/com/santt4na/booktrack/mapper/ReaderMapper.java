@@ -1,7 +1,7 @@
 package com.santt4na.booktrack.mapper;
 
 import com.santt4na.booktrack.domain.Reader;
-import com.santt4na.booktrack.dtos.ReaderDTO;
+import com.santt4na.booktrack.dtos.reader.ReaderDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

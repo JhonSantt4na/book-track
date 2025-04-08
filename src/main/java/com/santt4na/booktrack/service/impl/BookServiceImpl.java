@@ -1,7 +1,7 @@
 package com.santt4na.booktrack.service.impl;
 
 import com.santt4na.booktrack.domain.Book;
-import com.santt4na.booktrack.dtos.BookDTO;
+import com.santt4na.booktrack.dtos.book.BookDTO;
 import com.santt4na.booktrack.mapper.BookMapper;
 import com.santt4na.booktrack.repository.BookRepository;
 import com.santt4na.booktrack.service.BookService;

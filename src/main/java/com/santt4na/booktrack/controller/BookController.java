@@ -1,7 +1,6 @@
 package com.santt4na.booktrack.controller;
 
-import com.santt4na.booktrack.domain.Book;
-import com.santt4na.booktrack.dtos.BookDTO;
+import com.santt4na.booktrack.dtos.book.BookDTO;
 import com.santt4na.booktrack.service.BookService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

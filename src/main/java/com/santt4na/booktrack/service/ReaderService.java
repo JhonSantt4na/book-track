@@ -1,6 +1,6 @@
 package com.santt4na.booktrack.service;
 
-import com.santt4na.booktrack.dtos.ReaderDTO;
+import com.santt4na.booktrack.dtos.reader.ReaderDTO;
 import java.util.List;
 
 public interface ReaderService {
