@@ -1,17 +1,20 @@
 package com.santt4na.booktrack.service;
 
 import com.santt4na.booktrack.dtos.reader.ReaderDTO;
+import com.santt4na.booktrack.dtos.reader.ReaderResponseDTO;
+import com.santt4na.booktrack.dtos.reader.ReaderUpdateDTO;
+
 import java.util.List;
 
 public interface ReaderService {
 	
-	ReaderDTO createReader(ReaderDTO readerDTO);
+	ReaderResponseDTO createReader(ReaderDTO readerDTO);
 	
-	List<ReaderDTO> listAllReaders();
+	List<ReaderResponseDTO> listAllReaders();
 	
-	ReaderDTO findById(Long id);
+	ReaderResponseDTO findById(Long id);
 	
-	ReaderDTO updateReader(Long id, ReaderDTO readerDTO);
+	ReaderUpdateDTO updateReader(Long id, ReaderDTO readerDTO);
 	
 	void deleteReader(Long id);
 }

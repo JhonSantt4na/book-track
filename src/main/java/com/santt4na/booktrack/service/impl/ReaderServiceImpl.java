@@ -2,6 +2,8 @@ package com.santt4na.booktrack.service.impl;
 
 import com.santt4na.booktrack.domain.Reader;
 import com.santt4na.booktrack.dtos.reader.ReaderDTO;
+import com.santt4na.booktrack.dtos.reader.ReaderResponseDTO;
+import com.santt4na.booktrack.dtos.reader.ReaderUpdateDTO;
 import com.santt4na.booktrack.mapper.ReaderMapper;
 import com.santt4na.booktrack.repository.ReaderRepository;
 import com.santt4na.booktrack.service.ReaderService;
@@ -28,7 +30,7 @@ public class ReaderServiceImpl implements ReaderService {
 	
 	@Override
 	@Transactional
-	public ReaderDTO createReader(ReaderDTO readerDTO){
+	public ReaderResponseDTO createReader(ReaderDTO readerDTO){
 		if (readerDTO == null) {
 			throw new IllegalArgumentException("DTO can't be null");
 		}
@@ -39,29 +41,29 @@ public class ReaderServiceImpl implements ReaderService {
 		
 		Reader newReader = mapper.toEntity(readerDTO);
 		Reader savedReader = repository.save(newReader);
-		return mapper.toDto(savedReader);
+		return mapper.toResponseDTO(savedReader);
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<ReaderDTO> listAllReaders() {
+	public List<ReaderResponseDTO> listAllReaders() {
 		List<Reader> allReaders = repository.findAll();
 		return allReaders.stream()
-			.map(mapper::toDto)
+			.map(mapper::toResponseDTO)
 			.collect(Collectors.toList());
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
-	public ReaderDTO findById(Long id) {
+	public ReaderResponseDTO findById(Long id) {
 		Reader reader = repository.findById(id)
 			.orElseThrow(() -> new EntityNotFoundException("Reader not found with ID: " + id));
-		return mapper.toDto(reader);
+		return mapper.toResponseDTO(reader);
 	}
 	
 	@Override
 	@Transactional
-	public ReaderDTO updateReader(Long id,ReaderDTO readerDTO){
+	public ReaderUpdateDTO updateReader(Long id, ReaderDTO readerDTO){
 		Reader reader = repository.findById(id)
 			.orElseThrow(() -> new EntityNotFoundException("Reader not found with ID: " + id));
 		
@@ -72,7 +74,7 @@ public class ReaderServiceImpl implements ReaderService {
 		mapper.updateReaderFromDTO(readerDTO, reader);
 		
 		Reader updateReader = repository.save(reader);
-		return mapper.toDto(updateReader);
+		return mapper.toUpdateDTO(updateReader);
 	}
 	
 	@Override

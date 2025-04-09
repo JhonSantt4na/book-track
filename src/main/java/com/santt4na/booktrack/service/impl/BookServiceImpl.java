@@ -2,6 +2,8 @@ package com.santt4na.booktrack.service.impl;
 
 import com.santt4na.booktrack.domain.Book;
 import com.santt4na.booktrack.dtos.book.BookDTO;
+import com.santt4na.booktrack.dtos.book.BookResponseDTO;
+import com.santt4na.booktrack.dtos.book.BookUpdateDTO;
 import com.santt4na.booktrack.mapper.BookMapper;
 import com.santt4na.booktrack.repository.BookRepository;
 import com.santt4na.booktrack.service.BookService;
@@ -25,40 +27,40 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	@Transactional
-	public BookDTO createBook(BookDTO bookDTO){
+	public BookResponseDTO createBook(BookDTO bookDTO){
 		if (bookDTO == null){
 			throw new IllegalArgumentException("DTO can't be null");
 		}
-		
 		Book newBook = mapper.toEntity(bookDTO);
+		
 		Book savedBook = repository.save(newBook);
-		return mapper.toDto(savedBook);
+		return mapper.toResponseDTO(savedBook);
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<BookDTO> allBooks(){
+	public List<BookResponseDTO> listAllBooks(){
 		List<Book> books = repository.findAll();
-		return books.stream().map(mapper::toDto).collect(Collectors.toList());
+		return books.stream().map(mapper::toResponseDTO).collect(Collectors.toList());
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
-	public BookDTO findById(Long id){
+	public BookResponseDTO findById(Long id){
 		Book findBook = repository.findById(id)
 			.orElseThrow(() -> new EntityNotFoundException("Book not found with ID: " + id));
-		return 	mapper.toDto(findBook);
+		return 	mapper.toResponseDTO(findBook);
 	}
 	
 	@Override
 	@Transactional
-	public BookDTO updateBook(Long id,BookDTO bookDTO){
+	public BookResponseDTO updateBook(Long id, BookUpdateDTO bookDTO){
 		Book updateBook = repository.findById(id)
 			.orElseThrow(() -> new EntityNotFoundException("Book not found with ID: " + id));
 		
-		mapper.updateReaderFromDTO(bookDTO, updateBook);
+		mapper.updateBookFromDTO(bookDTO, updateBook);
 		repository.save(updateBook);
-		return mapper.toDto(updateBook);
+		return mapper.toResponseDTO(updateBook);
 	}
 	
 	@Override

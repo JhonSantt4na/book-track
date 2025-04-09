@@ -2,6 +2,8 @@ package com.santt4na.booktrack.mapper;
 
 import com.santt4na.booktrack.domain.Reader;
 import com.santt4na.booktrack.dtos.reader.ReaderDTO;
+import com.santt4na.booktrack.dtos.reader.ReaderResponseDTO;
+import com.santt4na.booktrack.dtos.reader.ReaderUpdateDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -18,4 +20,7 @@ public interface ReaderMapper {
 	
 	ReaderDTO toDto(Reader reader);
 	
+	ReaderResponseDTO toResponseDTO(Reader reader);
+	
+	ReaderUpdateDTO toUpdateDTO(Reader reader);
 }

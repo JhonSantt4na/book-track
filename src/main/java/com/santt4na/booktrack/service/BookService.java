@@ -1,16 +1,20 @@
 package com.santt4na.booktrack.service;
 
 import com.santt4na.booktrack.dtos.book.BookDTO;
+import com.santt4na.booktrack.dtos.book.BookResponseDTO;
+import com.santt4na.booktrack.dtos.book.BookUpdateDTO;
+
 import java.util.List;
 
 public interface BookService {
-	BookDTO createBook(BookDTO bookDTO);
 	
-	List<BookDTO> allBooks();
+	BookResponseDTO createBook(BookDTO bookDTO);
 	
-	BookDTO findById(Long id);
+	List<BookResponseDTO> listAllBooks();
 	
-	BookDTO updateBook(Long id, BookDTO bookDTO);
+	BookResponseDTO findById(Long id);
+	
+	BookResponseDTO updateBook(Long id, BookUpdateDTO bookDTO);
 	
 	void deleteBook(Long id);
 }

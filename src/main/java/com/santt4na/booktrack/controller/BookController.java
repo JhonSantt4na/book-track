@@ -1,5 +1,6 @@
 package com.santt4na.booktrack.controller;
 
+import com.santt4na.booktrack.dtos.book.BookDTO;
 import com.santt4na.booktrack.dtos.book.BookResponseDTO;
 import com.santt4na.booktrack.dtos.book.BookUpdateDTO;
 import com.santt4na.booktrack.service.BookService;
@@ -21,7 +22,7 @@ public class BookController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<BookResponseDTO> create(@Valid @RequestBody BookCreateDTO dto) {
+	public ResponseEntity<BookResponseDTO> create(@Valid @RequestBody BookDTO dto) {
 		BookResponseDTO created = service.createBook(dto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(created);
 	}

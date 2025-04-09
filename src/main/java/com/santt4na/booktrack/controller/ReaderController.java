@@ -1,5 +1,6 @@
 package com.santt4na.booktrack.controller;
 
+import com.santt4na.booktrack.dtos.reader.ReaderDTO;
 import com.santt4na.booktrack.dtos.reader.ReaderResponseDTO;
 import com.santt4na.booktrack.dtos.reader.ReaderUpdateDTO;
 import com.santt4na.booktrack.service.ReaderService;
@@ -21,7 +22,7 @@ public class ReaderController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<ReaderResponseDTO> create(@Valid @RequestBody ReaderCreateDTO dto) {
+	public ResponseEntity<ReaderResponseDTO> create(@Valid @RequestBody ReaderDTO dto) {
 		ReaderResponseDTO created = service.createReader(dto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(created);
 	}
@@ -37,9 +38,9 @@ public class ReaderController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<ReaderResponseDTO> update(
+	public ResponseEntity<ReaderUpdateDTO> update(
 		@PathVariable Long id,
-		@Valid @RequestBody ReaderUpdateDTO dto) {
+		@Valid @RequestBody ReaderDTO dto) {
 		return ResponseEntity.ok(service.updateReader(id, dto));
 	}
 	

@@ -1,5 +1,6 @@
 package com.santt4na.booktrack.controller;
 
+import com.santt4na.booktrack.dtos.rental.RentalDTO;
 import com.santt4na.booktrack.dtos.rental.RentalResponseDTO;
 import com.santt4na.booktrack.dtos.rental.RentalUpdateDTO;
 import com.santt4na.booktrack.service.RentalService;
@@ -21,14 +22,14 @@ public class RentalController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<RentalResponseDTO> create(@Valid @RequestBody RentalCreateDTO dto) {
+	public ResponseEntity<RentalResponseDTO> create(@Valid @RequestBody RentalDTO dto) {
 		RentalResponseDTO created = service.createRental(dto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(created);
 	}
 	
 	@GetMapping
 	public ResponseEntity<List<RentalResponseDTO>> findAll() {
-		return ResponseEntity.ok(service.listAllRentals());
+		return ResponseEntity.ok(service.listAllRental());
 	}
 	
 	@GetMapping("/{id}")
