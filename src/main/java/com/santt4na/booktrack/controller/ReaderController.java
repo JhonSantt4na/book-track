@@ -1,6 +1,7 @@
 package com.santt4na.booktrack.controller;
 
-import com.santt4na.booktrack.dtos.reader.ReaderDTO;
+import com.santt4na.booktrack.dtos.reader.ReaderResponseDTO;
+import com.santt4na.booktrack.dtos.reader.ReaderUpdateDTO;
 import com.santt4na.booktrack.service.ReaderService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController()
-@RequestMapping("/reader")
+@RestController
+@RequestMapping("/readers")
 public class ReaderController {
 	
 	private final ReaderService service;
@@ -19,32 +20,32 @@ public class ReaderController {
 		this.service = service;
 	}
 	
-	@PostMapping("/create")
-	public ResponseEntity<ReaderDTO> createReader(@Valid @RequestBody  ReaderDTO readerDTO) {
-		ReaderDTO newReader = service.createReader(readerDTO);
-		return ResponseEntity.status(HttpStatus.CREATED).body(newReader);
+	@PostMapping
+	public ResponseEntity<ReaderResponseDTO> create(@Valid @RequestBody ReaderCreateDTO dto) {
+		ReaderResponseDTO created = service.createReader(dto);
+		return ResponseEntity.status(HttpStatus.CREATED).body(created);
 	}
 	
-	@RequestMapping("/all")
-	public ResponseEntity<List<ReaderDTO>> allReader(){
-		List<ReaderDTO> listAll = service.listAllReaders();
-		return ResponseEntity.ok(listAll);
+	@GetMapping
+	public ResponseEntity<List<ReaderResponseDTO>> findAll() {
+		return ResponseEntity.ok(service.listAllReaders());
 	}
 	
-	@RequestMapping("/{id}")
-	public ResponseEntity<ReaderDTO> getById(@PathVariable Long id){
-		ReaderDTO findedReader = service.findById(id);
-		return  ResponseEntity.ok(findedReader);
+	@GetMapping("/{id}")
+	public ResponseEntity<ReaderResponseDTO> findById(@PathVariable Long id) {
+		return ResponseEntity.ok(service.findById(id));
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<ReaderDTO> updeteReader(@PathVariable Long id, @Valid @RequestBody ReaderDTO readerDTO){
-		ReaderDTO updatedReader = service.updateReader(id, readerDTO);
-		return ResponseEntity.ok(updatedReader);
+	public ResponseEntity<ReaderResponseDTO> update(
+		@PathVariable Long id,
+		@Valid @RequestBody ReaderUpdateDTO dto) {
+		return ResponseEntity.ok(service.updateReader(id, dto));
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteReader(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.deleteReader(id);
+		return ResponseEntity.noContent().build();
 	}
 }
