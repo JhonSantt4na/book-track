@@ -61,7 +61,7 @@ public class RentalServiceImpl implements RentalService {
 	}
 	
 	@Override
-	public List<RentalResponseDTO> listAllRental() {
+	public List<RentalResponseDTO> listAllRentals() {
 		return repository.findAll()
 			.stream()
 			.map(mapper::toResponseDTO)
@@ -80,7 +80,7 @@ public class RentalServiceImpl implements RentalService {
 		Rental rental = repository.findById(id)
 			.orElseThrow(() -> new RuntimeException("Aluguel não encontrado"));
 		
-		if (updateDTO.isReturned()) {
+		if (Boolean.TRUE.equals(updateDTO.getReturned())) {
 			rental.closeRental();
 			rental.setFineAmount(updateDTO.getFineAmount());
 			rental.getBook().setAvailable(true);

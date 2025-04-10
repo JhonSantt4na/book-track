@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 public interface BookMapper {
 	
-	@Mapping(target = "id", ignore = true)
 	void updateBookFromDTO(BookUpdateDTO dto, @MappingTarget Book entity);
 	
 	Book toEntity(BookDTO bookDTO);

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -34,16 +35,18 @@ public class Book {
 	private String cover;
 	private boolean available;
 	
-	public void addRental(Rental rental){
-		this.rentals.add(rental);
+	public void addRental(Rental rental) {
+		rentals.add(rental);
+		rental.setBook(this);
 	}
 	
-	public void removeRental(Rental rental){
-		this.rentals.remove(rental);
+	public void removeRental(Rental rental) {
+		rentals.remove(rental);
+		rental.setBook(null);
 	}
 	
-	public List<Rental> getRentals(){
-		return rentals.stream().toList();
+	public List<Rental> getRentals() {
+		return Collections.unmodifiableList(rentals);
 	}
 	
 }

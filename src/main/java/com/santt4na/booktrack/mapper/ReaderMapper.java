@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 public interface ReaderMapper {
 	
-	@Mapping(target = "id", ignore = true)
 	void updateReaderFromDTO(ReaderDTO dto, @MappingTarget Reader entity);
 	
 	Reader toEntity(ReaderDTO readerDTO);

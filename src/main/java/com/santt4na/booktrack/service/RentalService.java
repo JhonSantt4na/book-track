@@ -11,7 +11,7 @@ public interface RentalService {
 	
 	RentalResponseDTO createRental(RentalDTO rentalDTO);
 	
-	List<RentalResponseDTO> listAllRental();
+	List<RentalResponseDTO> listAllRentals();
 	
 	RentalResponseDTO findById(Long id);
 	

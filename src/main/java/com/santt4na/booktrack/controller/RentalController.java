@@ -29,7 +29,7 @@ public class RentalController {
 	
 	@GetMapping
 	public ResponseEntity<List<RentalResponseDTO>> findAll() {
-		return ResponseEntity.ok(service.listAllRental());
+		return ResponseEntity.ok(service.listAllRentals());
 	}
 	
 	@GetMapping("/{id}")

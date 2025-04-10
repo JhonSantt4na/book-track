@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 public interface RentalMapper {
 	
-	@Mapping(target = "id", ignore = true)
 	void updateMapperFromDTO(RentalDTO dto, @MappingTarget Rental entity);
 	
 	Rental toEntity(RentalDTO rentalDTO);
